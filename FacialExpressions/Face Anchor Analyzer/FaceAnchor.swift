@@ -16,7 +16,7 @@ protocol FaceAnchorDelegate: class {
 class FaceAnchor: NSObject {
     // MARK: -- Properties
     weak var delegate: FaceAnchorDelegate?
-    private var expression: String!
+    private var expression: String = "😐"
     
     // MARK: -- Methods
     required init(anchor: ARAnchor) {
@@ -28,6 +28,42 @@ class FaceAnchor: NSObject {
     }
     
     override init() {}
+    
+    func analyze(faceAnchor: ARFaceAnchor) {
+        let mouthSmileLeft = faceAnchor.blendShapes[.mouthSmileLeft] as? CGFloat ?? 0
+        let mouthSmileRight = faceAnchor.blendShapes[.mouthSmileRight] as? CGFloat ?? 0
+        let smile = (mouthSmileLeft + mouthSmileRight) / 2.0
+        DispatchQueue.main.async { [weak self] in
+            self?.showSmileWith(value: smile)
+        }
+        
+        let browDownLeft = faceAnchor.blendShapes[.browDownLeft] as? CGFloat ?? 0
+        let browDownRight = faceAnchor.blendShapes[.browDownRight] as? CGFloat ?? 0
+        let fret = (browDownLeft + browDownRight) / 2.0
+        DispatchQueue.main.async { [weak self] in
+            self?.showFretWith(value: fret)
+        }
+        
+        let eyeBlinkLeft = faceAnchor.blendShapes[.eyeBlinkLeft] as? CGFloat ?? 0
+        if eyeBlinkLeft > 0.6 {
+            DispatchQueue.main.async { [weak self] in
+                self?.showLeftBlink(value: eyeBlinkLeft)
+            }
+        }
+        
+        let eyeBlinkRight = faceAnchor.blendShapes[.eyeBlinkRight] as? CGFloat ?? 0
+        if eyeBlinkRight > 0.6 {
+            DispatchQueue.main.async { [weak self] in
+                self?.showRightBlink(value: eyeBlinkRight)
+            }
+        }
+        
+        let tongueOut = faceAnchor.blendShapes[.tongueOut] as? CGFloat ?? 0
+            DispatchQueue.main.async { [weak self] in
+                self?.showTongueOut(value: tongueOut)
+        }
+    }
+
     
     func showSmileWith(value: CGFloat) {
         switch value {
@@ -44,9 +80,9 @@ class FaceAnchor: NSObject {
     
     func showFretWith(value: CGFloat) {
         switch value {
-        case 0.7..<1 :
+        case 0.6..<1 :
             expression = "😡"
-        case 0.5..<0.7 :
+        case 0.5..<0.6 :
             expression = "😠"
         default:
             break
@@ -77,33 +113,14 @@ class FaceAnchor: NSObject {
         delegate?.update(expression: expression)
     }
     
-    func analyze(faceAnchor: ARFaceAnchor) {
-        let mouthSmileLeft = faceAnchor.blendShapes[.mouthSmileLeft] as? CGFloat ?? 0
-        let mouthSmileRight = faceAnchor.blendShapes[.mouthSmileRight] as? CGFloat ?? 0
-        let smile = (mouthSmileLeft + mouthSmileRight) / 2.0
-        DispatchQueue.main.async {
-            self.showSmileWith(value: smile)
+    func showTongueOut(value:  CGFloat) {
+        switch value {
+        case 0.1..<1 :
+            expression = "😛"
+        default:
+            break
         }
         
-        let browDownLeft = faceAnchor.blendShapes[.browDownLeft] as? CGFloat ?? 0
-        let browDownRight = faceAnchor.blendShapes[.browDownRight] as? CGFloat ?? 0
-        let fret = (browDownLeft + browDownRight) / 2.0
-        DispatchQueue.main.async {
-            self.showFretWith(value: fret)
-        }
-        
-        let eyeBlinkLeft = faceAnchor.blendShapes[.eyeBlinkLeft] as? CGFloat ?? 0
-        if eyeBlinkLeft > 0.6 {
-            DispatchQueue.main.async {
-                self.showLeftBlink(value: eyeBlinkLeft)
-            }
-        }
-        
-        let eyeBlinkRight = faceAnchor.blendShapes[.eyeBlinkRight] as? CGFloat ?? 0
-        if eyeBlinkRight > 0.6 {
-            DispatchQueue.main.async {
-                self.showRightBlink(value: eyeBlinkRight)
-            }
-        }
+        delegate?.update(expression: expression)
     }
 }

@@ -11,9 +11,10 @@
 		F40E870423AE1592009A4485 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E870323AE1592009A4485 /* ViewController.swift */; };
 		F40E870923AE1596009A4485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40E870823AE1596009A4485 /* Assets.xcassets */; };
 		F40E870C23AE1596009A4485 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40E870A23AE1596009A4485 /* LaunchScreen.storyboard */; };
-		F40E871723AE1597009A4485 /* FacialExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E871623AE1597009A4485 /* FacialExpressionsTests.swift */; };
 		F40E872223AE1EE1009A4485 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E872123AE1EE1009A4485 /* VideoManager.swift */; };
 		F4BF180723B0D42800E31B9B /* FaceAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF180623B0D42800E31B9B /* FaceAnchor.swift */; };
+		F4C793A8244DDE6A003F62C8 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C793A6244DDE6A003F62C8 /* ViewControllerTests.swift */; };
+		F4C793A9244DDE6A003F62C8 /* FaceAnchorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C793A7244DDE6A003F62C8 /* FaceAnchorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +35,11 @@
 		F40E870B23AE1596009A4485 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F40E870D23AE1596009A4485 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F40E871223AE1597009A4485 /* FacialExpressionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FacialExpressionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F40E871623AE1597009A4485 /* FacialExpressionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialExpressionsTests.swift; sourceTree = "<group>"; };
 		F40E871823AE1597009A4485 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F40E872123AE1EE1009A4485 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
 		F4BF180623B0D42800E31B9B /* FaceAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceAnchor.swift; sourceTree = "<group>"; };
+		F4C793A6244DDE6A003F62C8 /* ViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
+		F4C793A7244DDE6A003F62C8 /* FaceAnchorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceAnchorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,8 @@
 		F40E871523AE1597009A4485 /* FacialExpressionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				F40E871623AE1597009A4485 /* FacialExpressionsTests.swift */,
+				F4C793A7244DDE6A003F62C8 /* FaceAnchorTests.swift */,
+				F4C793A6244DDE6A003F62C8 /* ViewControllerTests.swift */,
 				F40E871823AE1597009A4485 /* Info.plist */,
 			);
 			path = FacialExpressionsTests;
@@ -184,6 +187,7 @@
 					};
 					F40E871123AE1597009A4485 = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
 						TestTargetID = F40E86FB23AE1592009A4485;
 					};
 				};
@@ -242,7 +246,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F40E871723AE1597009A4485 /* FacialExpressionsTests.swift in Sources */,
+				F4C793A8244DDE6A003F62C8 /* ViewControllerTests.swift in Sources */,
+				F4C793A9244DDE6A003F62C8 /* FaceAnchorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +398,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.arash.facialexpression;
+				PRODUCT_BUNDLE_IDENTIFIER = facialExpressions.arash.co;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -411,7 +416,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.arash.facialexpression;
+				PRODUCT_BUNDLE_IDENTIFIER = facialExpressions.arash.co;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -423,6 +428,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FacialExpressionsTests/Info.plist;
@@ -434,6 +440,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.arash.facialexpressions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FacialExpressions.app/FacialExpressions";
@@ -445,6 +452,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FacialExpressionsTests/Info.plist;
